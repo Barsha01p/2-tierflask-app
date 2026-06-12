@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Target Flask Application Server Info
-        APP_SERVER_IP  = '1.2.3.4' // <-- Replace with your Flask EC2 Public IP
+        APP_SERVER_IP  = '54.89.235.35' // <-- Replace with your Flask EC2 Public IP
         APP_SERVER_USER = 'ubuntu'
         
         // Secure AWS database tier variables
