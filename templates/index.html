@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask new project</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h2 { color: #333; margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        ul { list-style-type: none; padding: 0; max-height: 250px; overflow-y: auto; }
+        li { background: #f9f9f9; padding: 12px; margin-bottom: 8px; border-left: 4px solid #007bff; border-radius: 4px; }
+        .form-group { display: flex; margin-top: 20px; gap: 10px; }
+        input[type="text"] { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        button { background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>📩 Live Message Board</h2>
+    
+    <!-- Loop through messages pulled dynamically from the database -->
+    <ul id="message-list">
+        {% for msg in messages %}
+            <li>{{ msg[0] }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Submission block to add rows live -->
+    <form action="/submit" method="POST">
+        <div class="form-group">
+            <input type="text" name="new_message" placeholder="Type a new message here..." required>
+            <button type="submit">SEND</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+
