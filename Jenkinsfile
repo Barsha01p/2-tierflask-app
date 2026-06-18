@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone repo') {
             steps {
-                git branch: 'main', url: 'https://github.com'
+                git branch: 'main', url: 'https://github.com/Barsha01p/2-tierflask-app.git'
             }
         }
         
