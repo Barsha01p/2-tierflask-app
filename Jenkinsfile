@@ -1,8 +1,8 @@
 pipeline {
     agent any
     
-    // Defines BuildKit globally for all stages in this pipeline
     environment {
+        // Automatically turns on modern BuildKit without requiring buildx extensions
         DOCKER_BUILDKIT = '1'
     }
 
@@ -15,20 +15,16 @@ pipeline {
         
         stage('Build image') {
             steps {
-                // No raw variable assignments allowed here anymore
-                sh 'docker buildx build -t flask-app .'
+                // CHANGED THIS LINE: Replaced 'buildx build' with 'build'
+                sh 'docker build -t flask-app .'
             }
         }
         
         stage('Deploy with docker compose') {
             steps {
-                // Existing containers are torn down safely
                 sh 'docker compose down || true'
-                // Start app components, building via modern Docker mechanics
                 sh 'docker compose up -d --build'
             }
         }
     }
 }
-
-
