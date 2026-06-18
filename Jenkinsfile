@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         // Automatically turns on modern BuildKit without requiring buildx extensions
-        DOCKER_BUILDKIT = '1'
+        DOCKER_BUILDKIT = '0'
     }
 
     stages {
