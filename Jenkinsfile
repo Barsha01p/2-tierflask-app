@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo 'Wiping out old deployment boxes...'
                 // Shuts down existing running apps to avoid port collision errors
-                sh 'sudo docker compose down --remove-orphans'
+                sh 'docker compose down --remove-orphans'
             }
         }
 
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 echo 'Compiling and launching fresh containers...'
                 // Automatically rebuilds your Dockerfile updates and boots them in background mode
-                sh 'sudo docker compose up -d --build'
+                sh 'docker compose up -d --build'
             }
         }
     }
