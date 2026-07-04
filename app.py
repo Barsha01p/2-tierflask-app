@@ -21,7 +21,7 @@ def check_database():
             database=os.environ.get('DB_NAME', 'my_app_db'),
             connect_timeout=3
         )
-         with connection.cursor() as cursor:
+        with connection.cursor() as cursor:
             # 1. Create a physical table if it doesn't exist yet
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS system_logs (
@@ -31,7 +31,7 @@ def check_database():
             """)
             
             # 2. Insert a test log entry
- cursor.execute("INSERT INTO system_logs (message) VALUES ('Jenkins deployment connection verified')")
+            cursor.execute("INSERT INTO system_logs (message) VALUES ('Jenkins deployment connection verified')")
             connection.commit()
             
             # 3. Read the data back to confirm it works
